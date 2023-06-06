@@ -1,4 +1,4 @@
-package com.bookit.utilities;
+package com.interviews.utilities;
 
 import java.io.FileInputStream;
 import java.util.Properties;

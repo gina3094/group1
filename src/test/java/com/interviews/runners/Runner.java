@@ -1,4 +1,4 @@
-package com.bookit.runners;
+package com.interviews.runners;
 
 import io.cucumber.junit.Cucumber;
 import io.cucumber.junit.CucumberOptions;
@@ -9,11 +9,11 @@ import org.junit.runner.RunWith;
         plugin = {"json:target/cucumber.json",
                   "html:target/default-html-reports"},
         features = "src/test/resources/features/",
-        glue = "com/bookit/step_definitions/",
-        tags = "@add_student",
+        glue = "com/interviews/step_definitions/",
+        tags = "",
         dryRun = false
 )
-public class CukesRunner {
+public class Runner {
 }
 
 
