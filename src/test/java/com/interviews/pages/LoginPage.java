@@ -17,4 +17,6 @@ public class LoginPage {
     private WebElement passwordInput;
     @FindBy(xpath = "//button[@type='submit']")
     private WebElement submitBtn;
+    @FindBy(xpath = "//span[.='Username or password is incorrect']")
+    private WebElement invalidLoginMessage;
 }

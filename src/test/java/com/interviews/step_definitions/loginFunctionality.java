@@ -1,6 +1,7 @@
 package com.interviews.step_definitions;
 
 import com.interviews.library.Constants;
+import com.interviews.pages.LoginPage;
 import com.interviews.utilities.BrowserUtils;
 import com.interviews.utilities.ConfigurationReader;
 import com.interviews.utilities.DocuportUtils;
@@ -16,6 +17,7 @@ import org.junit.runner.RunWith;
 
 @RunWith(JUnitParamsRunner.class)
 public class loginFunctionality {
+    LoginPage loginPage = new LoginPage();
 
     @BeforeEach
     public void initPage() {
@@ -33,5 +35,32 @@ public class loginFunctionality {
         Driver.closeDriver();
     }
 
+    @ParameterizedTest
+    @ValueSource(strings = {"client", "supervisor", "advisor", "employee"})
+    @Test
+    public void loginFunctionalityInvalidPassword(String userRole) {
+        DocuportUtils.invalidLogin(userRole,"password");
+        BrowserUtils.waitFor(3);
+        Assertions.assertTrue(loginPage.getInvalidLoginMessage().isDisplayed());
+        Driver.closeDriver();
+    }
+    @ParameterizedTest
+    @ValueSource(strings = {"client", "supervisor", "advisor", "employee"})
+    @Test
+    public void loginFunctionalityInvalidUsername(String userRole) {
+        DocuportUtils.invalidLogin(userRole,"username");
+        BrowserUtils.waitFor(3);
+        Assertions.assertTrue(loginPage.getInvalidLoginMessage().isDisplayed());
+        Driver.closeDriver();
+    }
+    @ParameterizedTest
+    @ValueSource(strings = {"client", "supervisor", "advisor", "employee"})
+    @Test
+    public void loginFunctionalityInvalidCredentials(String userRole) {
+        DocuportUtils.invalidLogin(userRole,"credentials");
+        BrowserUtils.waitFor(3);
+        Assertions.assertTrue(loginPage.getInvalidLoginMessage().isDisplayed());
+        Driver.closeDriver();
+    }
 
 }
